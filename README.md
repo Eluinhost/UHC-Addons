@@ -3,7 +3,15 @@ UHC-Addons
 
 Addon plugins for the UHC Core plugin
 
+New UHC Structure
+-----------------
+
+UHC Core relies on PluginFramework to handle dependencies/commands e.t.c.
+
+Addon plugins use UltraHardcore and the included framework to register new features/commands for the plugin
+
 Plugins:
+========
 
 Border
 ------
