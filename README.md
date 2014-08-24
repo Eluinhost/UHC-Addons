@@ -97,7 +97,8 @@ Scatter plugin
 
 ###Commands
 
-- [ ] Scatter command with teams support, optional amount/tick
+- [x] Scatter command with teams support
+   - [ ] optional amount/tick
 
 ###Features
 
