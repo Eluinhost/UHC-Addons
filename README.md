@@ -93,7 +93,9 @@ None
 Scatter
 -------
 
-Scatter plugin
+[Documentation](scatter/README.md)
+
+Addon for scatter players within worlds
 
 ###Commands
 
