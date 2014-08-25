@@ -1,5 +1,5 @@
 name: UHCScatter
-main: com.publicuhc.uhcscatter.UhcScatterPlugin
+main: com.publicuhc.uhcaddons.scatter.UhcScatterPlugin
 version: 1.0.0
 description: Scatter addon plugin for UHC
 author: ghowden/Eluinhost
