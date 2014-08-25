@@ -6,6 +6,7 @@ import com.publicuhc.scatterlib.exceptions.ScatterLocationException;
 import com.publicuhc.scatterlib.logic.StandardScatterLogic;
 import com.publicuhc.scatterlib.zones.CircularDeadZoneBuilder;
 import com.publicuhc.scatterlib.zones.DeadZone;
+import com.publicuhc.ultrahardcore.api.Command;
 import com.publicuhc.ultrahardcore.framework.configuration.Configurator;
 import com.publicuhc.ultrahardcore.framework.routing.CommandMethod;
 import com.publicuhc.ultrahardcore.framework.routing.CommandRequest;
@@ -28,7 +29,7 @@ import org.bukkit.scoreboard.Team;
 
 import java.util.*;
 
-public class ScatterCommand  {
+public class ScatterCommand implements Command {
 
     private final List<Material> mats = new ArrayList<Material>();
     private final int maxAttempts;
