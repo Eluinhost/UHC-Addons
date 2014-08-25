@@ -1,18 +1,18 @@
 package com.publicuhc.uhcaddons.scatter;
 
 import com.publicuhc.ultrahardcore.api.Command;
-import com.publicuhc.ultrahardcore.framework.shaded.inject.AbstractModule;
+import com.publicuhc.ultrahardcore.api.UHCAddonModule;
+import com.publicuhc.ultrahardcore.api.UHCFeature;
 import com.publicuhc.ultrahardcore.framework.shaded.inject.multibindings.Multibinder;
 
-/**
- * Project: UHC-Addons
- * Package: com.publicuhc.uhcaddons.scatter
- * Created by Eluinhost on 13:05 25/08/2014 2014.
- */
-public class ScatterModule extends AbstractModule {
+public class ScatterModule extends UHCAddonModule {
     @Override
-    protected void configure() {
-        Multibinder<Command> binder = Multibinder.newSetBinder(binder(), Command.class);
+    protected void registerFeatures(Multibinder<UHCFeature> binder) {
+        //no features
+    }
+
+    @Override
+    protected void registerCommands(Multibinder<Command> binder) {
         binder.addBinding().to(ScatterCommand.class);
     }
 }
