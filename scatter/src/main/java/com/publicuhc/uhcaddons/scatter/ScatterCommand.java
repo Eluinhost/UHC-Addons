@@ -15,7 +15,7 @@ import com.publicuhc.ultrahardcore.framework.routing.annotation.PermissionRestri
 import com.publicuhc.ultrahardcore.framework.routing.converters.LocationValueConverter;
 import com.publicuhc.ultrahardcore.framework.routing.converters.OnlinePlayerValueConverter;
 import com.publicuhc.ultrahardcore.framework.shaded.javax.Inject;
-import com.publicuhc.ultrahardcore.framework.shaded.joptsimple.OptionParser;
+import com.publicuhc.ultrahardcore.framework.shaded.joptsimple.OptionDeclarer;
 import com.publicuhc.ultrahardcore.framework.shaded.joptsimple.OptionSet;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -142,7 +142,7 @@ public class ScatterCommand implements Command {
     }
 
     @OptionsMethod
-    public void onScatterCommand(OptionParser parser)
+    public void onScatterCommand(OptionDeclarer parser)
     {
         parser.nonOptions().withValuesConvertedBy(new OnlinePlayerValueConverter(true));
         parser.accepts("t")
