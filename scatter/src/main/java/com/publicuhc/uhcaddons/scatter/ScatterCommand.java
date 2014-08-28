@@ -8,19 +8,20 @@ import com.publicuhc.scatterlib.zones.CircularDeadZoneBuilder;
 import com.publicuhc.scatterlib.zones.DeadZone;
 import com.publicuhc.ultrahardcore.api.Command;
 import com.publicuhc.ultrahardcore.framework.configuration.Configurator;
-import com.publicuhc.ultrahardcore.framework.routing.CommandMethod;
-import com.publicuhc.ultrahardcore.framework.routing.CommandRequest;
-import com.publicuhc.ultrahardcore.framework.routing.OptionsMethod;
+import com.publicuhc.ultrahardcore.framework.routing.annotation.CommandMethod;
+import com.publicuhc.ultrahardcore.framework.routing.annotation.CommandOptions;
+import com.publicuhc.ultrahardcore.framework.routing.annotation.OptionsMethod;
+import com.publicuhc.ultrahardcore.framework.routing.annotation.PermissionRestriction;
 import com.publicuhc.ultrahardcore.framework.routing.converters.LocationValueConverter;
 import com.publicuhc.ultrahardcore.framework.routing.converters.OnlinePlayerValueConverter;
 import com.publicuhc.ultrahardcore.framework.shaded.javax.Inject;
-import com.publicuhc.ultrahardcore.framework.shaded.joptsimple.NonOptionArgumentSpec;
 import com.publicuhc.ultrahardcore.framework.shaded.joptsimple.OptionParser;
 import com.publicuhc.ultrahardcore.framework.shaded.joptsimple.OptionSet;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginLogger;
@@ -33,8 +34,6 @@ public class ScatterCommand implements Command {
 
     private final List<Material> mats = new ArrayList<Material>();
     private final int maxAttempts;
-
-    private NonOptionArgumentSpec<Player[]> nonOptions;
 
     @Inject
     public ScatterCommand(Configurator configurator, PluginLogger logger)
@@ -51,32 +50,23 @@ public class ScatterCommand implements Command {
         maxAttempts = config.getInt("max attempts per location");
     }
 
-    @CommandMethod(command = "sct", permission = "UHC.scatter.command", options = true)
-    public void onScatterCommand(CommandRequest request)
+    @CommandMethod("sct")
+    @PermissionRestriction("UHC.scatter.command")
+    @CommandOptions({"t", "r", "minradius", "min", "c", "[arguments]"})
+    public void onScatterCommand(OptionSet set, CommandSender sender, StandardScatterLogic logic, Double r, Double minradius, Double min, Location centre, List<Player[]> args)
     {
-        OptionSet set = request.getOptions();
-        StandardScatterLogic logic = (StandardScatterLogic) set.valueOf("t");
-        Double radius = (Double) set.valueOf("r");
-        Double minRadius = (Double) set.valueOf("minradius");
-        Double min = (Double) set.valueOf("min");
-        Location center = (Location) set.valueOf("c");
         boolean asTeams = set.has("teams");
 
-        List<Player[]> playerlist = set.valuesOf(nonOptions);
+        Set<Player> toScatter = OnlinePlayerValueConverter.recombinePlayerLists(args);
 
-        List<Player> toScatter = new ArrayList<Player>();
-        for(Player[] plist : playerlist) {
-            Collections.addAll(toScatter, plist);
-        }
-
-        logic.setCentre(center);
+        logic.setCentre(centre);
         logic.setMaxAttempts(maxAttempts);
-        logic.setRadius(radius);
+        logic.setRadius(r);
 
         if(!mats.isEmpty())
             logic.setMaterials(mats);
 
-        CircularDeadZoneBuilder deadZoneBuilder = new CircularDeadZoneBuilder(min);
+        CircularDeadZoneBuilder deadZoneBuilder = new CircularDeadZoneBuilder(minradius);
 
         List<DeadZone> baseDeadZones = new ArrayList<DeadZone>();
         if(min > 0) {
@@ -88,9 +78,9 @@ public class ScatterCommand implements Command {
             }
         }
 
-        if(minRadius > 0) {
-            CircularDeadZoneBuilder builder = new CircularDeadZoneBuilder(minRadius);
-            baseDeadZones.add(builder.buildForLocation(center));
+        if(minradius > 0) {
+            CircularDeadZoneBuilder builder = new CircularDeadZoneBuilder(minradius);
+            baseDeadZones.add(builder.buildForLocation(centre));
         }
 
         Scatterer scatterer = new DefaultScatterer(logic, baseDeadZones, deadZoneBuilder);
@@ -119,7 +109,7 @@ public class ScatterCommand implements Command {
         try {
             locations = scatterer.getScatterLocations(amount);
         } catch (ScatterLocationException e) {
-            request.sendMessage(ChatColor.RED + "Couldn't find valid locations for all players");
+            sender.sendMessage(ChatColor.RED + "Couldn't find valid locations for all players");
             return;
         }
 
@@ -154,7 +144,7 @@ public class ScatterCommand implements Command {
     @OptionsMethod
     public void onScatterCommand(OptionParser parser)
     {
-        nonOptions = parser.nonOptions().withValuesConvertedBy(new OnlinePlayerValueConverter(true));
+        parser.nonOptions().withValuesConvertedBy(new OnlinePlayerValueConverter(true));
         parser.accepts("t")
                 .withRequiredArg()
                 .required()
