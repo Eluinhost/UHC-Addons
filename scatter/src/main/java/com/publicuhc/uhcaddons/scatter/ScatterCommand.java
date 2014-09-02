@@ -17,8 +17,8 @@ import com.publicuhc.ultrahardcore.framework.routing.converters.OnlinePlayerValu
 import com.publicuhc.ultrahardcore.framework.shaded.javax.Inject;
 import com.publicuhc.ultrahardcore.framework.shaded.joptsimple.OptionDeclarer;
 import com.publicuhc.ultrahardcore.framework.shaded.joptsimple.OptionSet;
+import com.publicuhc.ultrahardcore.framework.translate.Translate;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
@@ -35,9 +35,12 @@ public class ScatterCommand implements Command {
     private final List<Material> mats = new ArrayList<Material>();
     private final int maxAttempts;
 
+    private final Translate translate;
+
     @Inject
-    public ScatterCommand(Configurator configurator, PluginLogger logger)
+    public ScatterCommand(Translate translate, Configurator configurator, PluginLogger logger)
     {
+        this.translate = translate;
         FileConfiguration config = configurator.getConfig("main");
         List<String> stringMats = config.getStringList("allowed blocks");
         for(String stringMat : stringMats) {
@@ -58,6 +61,10 @@ public class ScatterCommand implements Command {
         boolean asTeams = set.has("teams");
 
         Set<Player> toScatter = OnlinePlayerValueConverter.recombinePlayerLists(args);
+
+        if(toScatter.isEmpty()) {
+            translate.sendMessage("must provide players", sender);
+        }
 
         logic.setCentre(centre);
         logic.setMaxAttempts(maxAttempts);
@@ -109,12 +116,12 @@ public class ScatterCommand implements Command {
         try {
             locations = scatterer.getScatterLocations(amount);
         } catch (ScatterLocationException e) {
-            sender.sendMessage(ChatColor.RED + "Couldn't find valid locations for all players");
+            translate.sendMessage("couldnt find locations", sender);
             return;
         }
 
         Collections.shuffle(locations);
-        Bukkit.broadcastMessage(ChatColor.GOLD + "Starting scatter of " + amount + " players/teams");
+        translate.broadcastMessage("start scatter");
 
         Iterator<Location> locationIterator = locations.iterator();
         int count = 1;
@@ -127,7 +134,7 @@ public class ScatterCommand implements Command {
                 p.teleport(location);
             }
 
-            Bukkit.broadcastMessage(ChatColor.GREEN + "[" + count++ + "/" + amount + "] Team " + team.getKey() + " scattered");
+            translate.broadcastMessage("item scattered", count, amount, "Team", team.getKey());
         }
 
         for(Player p : toScatter) {
@@ -135,10 +142,10 @@ public class ScatterCommand implements Command {
             location.add(0, 1, 0);
 
             p.teleport(location);
-            Bukkit.broadcastMessage(ChatColor.GREEN + "[" + count++ + "/" + amount + "] " + p.getName() + " scattered");
+            translate.broadcastMessage("item scattered", count, amount, "Player", p.getName());
         }
 
-        Bukkit.broadcastMessage(ChatColor.GOLD + "Scatter complete");
+        translate.broadcastMessage("complete");
     }
 
     @OptionsMethod
