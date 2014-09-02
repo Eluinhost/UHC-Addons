@@ -1,5 +1,5 @@
 couldnt find locations: Couldn't find valid locations for all players
 must provide players: Must supply at least one online player
 start scatter: Starting scatter of %1$d players/teams
-item scattered: [%1$d/%2$d] %3$s %4$s scattered
+item scattered: "[%1$d/%2$d] %3$s %4$s scattered"
 complete: Scatter completed.
