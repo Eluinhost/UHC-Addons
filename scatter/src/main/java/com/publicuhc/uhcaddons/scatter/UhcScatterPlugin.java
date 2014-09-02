@@ -11,6 +11,6 @@ public class UhcScatterPlugin extends JavaPlugin {
     {
         UltraHardcore uhc = (UltraHardcore) Bukkit.getPluginManager().getPlugin("UltraHardcore");
 
-        uhc.registerAddon(new ScatterModule());
+        uhc.registerAddon(new ScatterModule(this));
     }
 }
