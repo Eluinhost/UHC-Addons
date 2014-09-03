@@ -1,5 +1,6 @@
 package com.publicuhc.uhcaddons.scatter;
 
+import com.google.common.base.Optional;
 import com.publicuhc.scatterlib.DefaultScatterer;
 import com.publicuhc.scatterlib.Scatterer;
 import com.publicuhc.scatterlib.exceptions.ScatterLocationException;
@@ -41,7 +42,11 @@ public class ScatterCommand implements Command {
     public ScatterCommand(Translate translate, Configurator configurator, PluginLogger logger)
     {
         this.translate = translate;
-        FileConfiguration config = configurator.getConfig("main");
+        Optional<FileConfiguration> mainConfig = configurator.getConfig("main");
+        if(!mainConfig.isPresent()) {
+            throw new IllegalStateException("Config file 'main' was not found, cannot find configuration values");
+        }
+        FileConfiguration config = mainConfig.get();
         List<String> stringMats = config.getStringList("allowed blocks");
         for(String stringMat : stringMats) {
             Material mat = Material.matchMaterial(stringMat);
