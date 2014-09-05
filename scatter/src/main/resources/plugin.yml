@@ -1,6 +1,6 @@
-name: UHCScatter
-main: com.publicuhc.uhcaddons.scatter.UhcScatterPlugin
-version: 1.0.0
+name: ${addon-name}
+main: ${main-class}
+version: ${project.version}
 description: Scatter addon plugin for UHC
 author: ghowden/Eluinhost
 website: wiki.publicuhc.com
@@ -8,9 +8,9 @@ database: false
 depend: [UltraHardcore]
 commands:
     sct:
-      description: Scatter players
-      usage: /<command>
-      aliases: [uhcsct]
+        description: Scatter players
+        usage: /<command>
+        aliases: [uhcsct]
 permissions:
     UHC.scatter.command:
         description: Use the scatter command

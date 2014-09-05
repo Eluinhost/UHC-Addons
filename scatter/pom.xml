@@ -11,6 +11,11 @@
     </parent>
     <artifactId>scatter</artifactId>
 
+    <properties>
+        <addon-name>UHC-Scatter</addon-name>
+        <main-class>${project.groupId}.${project.artifactId}.UhcScatterPlugin</main-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.publicuhc</groupId>
