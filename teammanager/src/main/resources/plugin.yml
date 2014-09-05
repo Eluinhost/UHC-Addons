@@ -1,0 +1,28 @@
+name: ${addon-name}
+main: ${main-class}
+version: ${project.version}
+description: Team manager plugin for UHC
+author: ghowden/Eluinhost
+website: wiki.publicuhc.com
+database: false
+depend: [UltraHardcore]
+commands:
+    teamm:
+        description: Team manager commands
+        aliases: [uhcteamm]
+    noteam:
+        description: List of people not in a team
+        aliases: [uhcnoteam]
+    reqteam:
+        description: Team request commands
+        aliases: [uhcreqteam]
+    pmt:
+        description: PM your team
+        aliases: [uhcpmt]
+permissions:
+    UHC.teams.create:
+        description: Allows use of /teamm create command
+        decfault: op
+    UHC.teams.remove:
+        description: Allows use of /teamm remove command
+        default: op

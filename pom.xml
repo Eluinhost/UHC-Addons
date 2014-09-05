@@ -11,6 +11,8 @@
 
     <modules>
         <module>scatter</module>
+        <module>teammanager</module>
+        <module>potions</module>
     </modules>
 
     <licenses>
