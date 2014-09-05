@@ -117,6 +117,6 @@ None
 
 ###Features
 
-- [ ] Disable splash
-- [ ] Disable Tier 2
-- [ ] Disable Absorb
+- [x] Disable splash
+- [x] Disable Tier 2
+- [x] Disable Absorb

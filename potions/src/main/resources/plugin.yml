@@ -1,0 +1,16 @@
+name: ${addon-name}
+main: ${main-class}
+version: ${project.version}
+description: Potions addon plugin for UHC
+author: ghowden/Eluinhost
+website: wiki.publicuhc.com
+database: false
+depend: [UltraHardcore]
+commands:
+permissions:
+    UHC.disableTier2:
+        description: Disables tier 2 potion crafting
+        default: true
+    UHC.disableSplash:
+        description: Disables splash potion crafting
+        default: true
