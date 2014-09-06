@@ -1,7 +1,9 @@
-package com.publicuhc.uhcaddons.teammanager;
+package com.publicuhc.uhcaddons.teammanager.torefactor;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.Sets;
+import com.publicuhc.uhcaddons.teammanager.torefactor.TeamsUtil;
+import com.publicuhc.uhcaddons.teammanager.torefactor.WordsUtil;
 import com.publicuhc.ultrahardcore.api.Command;
 import com.publicuhc.ultrahardcore.framework.routing.annotation.*;
 import com.publicuhc.ultrahardcore.framework.routing.converters.OnlinePlayerValueConverter;

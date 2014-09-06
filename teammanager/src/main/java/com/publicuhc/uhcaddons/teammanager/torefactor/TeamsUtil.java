@@ -19,7 +19,7 @@
  * along with UltraHardcore.  If not, see <http ://www.gnu.org/licenses/>.
  */
 
-package com.publicuhc.uhcaddons.teammanager;
+package com.publicuhc.uhcaddons.teammanager.torefactor;
 
 import com.publicuhc.ultrahardcore.framework.shaded.inject.Inject;
 import org.bukkit.Bukkit;

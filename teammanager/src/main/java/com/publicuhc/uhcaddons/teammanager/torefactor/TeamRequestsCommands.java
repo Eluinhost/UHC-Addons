@@ -19,7 +19,7 @@
  * along with UltraHardcore.  If not, see <http ://www.gnu.org/licenses/>.
  */
 
-package com.publicuhc.uhcaddons.teammanager;
+package com.publicuhc.uhcaddons.teammanager.torefactor;
 
 import com.publicuhc.pluginframework.commands.annotation.CommandMethod;
 import com.publicuhc.pluginframework.commands.annotation.RouteInfo;
@@ -31,6 +31,7 @@ import com.publicuhc.pluginframework.configuration.Configurator;
 import com.publicuhc.pluginframework.shaded.inject.Inject;
 import com.publicuhc.pluginframework.translate.Translate;
 import com.publicuhc.pluginframework.util.UUIDFetcher;
+import com.publicuhc.uhcaddons.teammanager.torefactor.TeamsUtil;
 import com.publicuhc.ultrahardcore.util.ServerUtil;
 import com.publicuhc.ultrahardcore.util.TeamsUtil;
 import org.bukkit.Bukkit;

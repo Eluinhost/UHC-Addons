@@ -19,7 +19,7 @@
  * along with UltraHardcore.  If not, see <http ://www.gnu.org/licenses/>.
  */
 
-package com.publicuhc.uhcaddons.teammanager;
+package com.publicuhc.uhcaddons.teammanager.torefactor;
 
 import com.google.common.base.Optional;
 import com.publicuhc.ultrahardcore.framework.configuration.Configurator;
