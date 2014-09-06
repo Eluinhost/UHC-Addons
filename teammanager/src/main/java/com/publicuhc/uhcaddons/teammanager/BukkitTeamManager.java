@@ -1,18 +1,25 @@
 package com.publicuhc.uhcaddons.teammanager;
 
 import com.google.common.base.Optional;
+import com.publicuhc.ultrahardcore.framework.translate.Translate;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
+
+import java.util.Set;
 
 public class BukkitTeamManager implements TeamManager {
 
     private final Scoreboard scoreboard;
     private final TeamNameGenerator nameGenerator;
+    private final Translate translate;
 
-    public BukkitTeamManager(Scoreboard scoreboard, TeamNameGenerator nameGenerator)
+    public BukkitTeamManager(Scoreboard scoreboard, TeamNameGenerator nameGenerator, Translate translate)
     {
         this.scoreboard = scoreboard;
         this.nameGenerator = nameGenerator;
+        this.translate = translate;
     }
 
     @Override
@@ -35,5 +42,29 @@ public class BukkitTeamManager implements TeamManager {
         } catch (Exception ex) {
             return Optional.absent();
         }
+    }
+
+    @Override
+    public void deleteAllTeams()
+    {
+        Set<Team> allTeams = scoreboard.getTeams();
+
+        for(Team team : allTeams) {
+            deleteTeam(team);
+        }
+    }
+
+    @Override
+    public void deleteTeam(Team team)
+    {
+        Set<OfflinePlayer> players = team.getPlayers();
+
+        for(OfflinePlayer player : players) {
+            if(player.isOnline()) {
+                translate.sendMessage("disbanded", (Player) player);
+            }
+        }
+
+        team.unregister();
     }
 }

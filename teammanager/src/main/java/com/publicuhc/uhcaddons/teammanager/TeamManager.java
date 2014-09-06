@@ -19,4 +19,15 @@ public interface TeamManager {
      * @return the created team if created
      */
     Optional<Team> createTeam(String name, boolean randomName);
+
+    /**
+     * Removes all registered teams from the scoreboard and tells the players in the team about it's deletion
+     */
+    void deleteAllTeams();
+
+    /**
+     * Deletes the given team and tells all online players in the team about it
+     * @param team the team to delete
+     */
+    void deleteTeam(Team team);
 }
