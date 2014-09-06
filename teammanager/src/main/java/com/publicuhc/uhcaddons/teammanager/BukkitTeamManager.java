@@ -67,4 +67,9 @@ public class BukkitTeamManager implements TeamManager {
 
         team.unregister();
     }
+
+    @Override
+    public Optional<Team> getTeamByName(String name) {
+        return Optional.fromNullable(scoreboard.getTeam(name));
+    }
 }

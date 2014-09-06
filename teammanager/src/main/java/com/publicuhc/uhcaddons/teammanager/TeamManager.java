@@ -30,4 +30,12 @@ public interface TeamManager {
      * @param team the team to delete
      */
     void deleteTeam(Team team);
+
+    /**
+     * Get the team with the given name
+     *
+     * @param name the name of the team
+     * @return the team if it exists
+     */
+    Optional<Team> getTeamByName(String name);
 }
