@@ -23,6 +23,6 @@ permissions:
     UHC.teams.create:
         description: Allows use of /teamm create command
         decfault: op
-    UHC.teams.remove:
-        description: Allows use of /teamm remove command
+    UHC.teams.delete:
+        description: Allows use of /teamm delete command
         default: op

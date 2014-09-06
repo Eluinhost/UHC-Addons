@@ -12,13 +12,12 @@ Creates teams with the given names
 -r = Give the teams random display names, if not set will use the given name
 -n = Number of teams to create with auto generated names (UHCxxx)
 
-### Remove teams
+### Delete teams
 
 Deletes the teams with the given names
 
-`remove [-ra] teamName1 teamName2 ...`
+`delete [-a] [teamName1 teamName2] ...`
 
--r = Treat the team names as regex to match the team names
 -a = Remove all teams
 
 ### Join Team
