@@ -6,15 +6,19 @@ import org.bukkit.scoreboard.Team;
 public class BukkitTeamManager implements TeamManager {
 
     private final Scoreboard scoreboard;
+    private final TeamNameGenerator nameGenerator;
 
-    public BukkitTeamManager(Scoreboard scoreboard)
+    public BukkitTeamManager(Scoreboard scoreboard, TeamNameGenerator nameGenerator)
     {
         this.scoreboard = scoreboard;
+        this.nameGenerator = nameGenerator;
     }
 
     @Override
-    public Team getNewTeam() {
-        //TODO
-        return null;
+    public Team getNewTeam()
+    {
+        Team newTeam = scoreboard.registerNewTeam(nameGenerator.getNextAvailableTeamName());
+        newTeam.setDisplayName(nameGenerator.getRandomTeamDisplayName());
+        return newTeam;
     }
 }

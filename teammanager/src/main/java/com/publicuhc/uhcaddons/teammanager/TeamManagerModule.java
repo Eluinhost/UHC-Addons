@@ -10,5 +10,6 @@ public class TeamManagerModule extends AbstractModule {
     protected void configure() {
         bind(TeamManager.class).to(BukkitTeamManager.class);
         bind(Scoreboard.class).toInstance(Bukkit.getScoreboardManager().getMainScoreboard());
+        bind(TeamNameGenerator.class).to(DefaultTeamNameGenerator.class);
     }
 }
