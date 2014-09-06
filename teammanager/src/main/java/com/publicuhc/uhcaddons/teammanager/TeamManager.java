@@ -5,7 +5,8 @@ import org.bukkit.scoreboard.Team;
 public interface TeamManager {
 
     /**
-     * @return a new team using whatever naming scheme is implemented
+     * @param randomName if true gives a random name from the TeamNameGenerator, if false uses the team name
+     * @return the generated team
      */
-    Team getNewTeam();
+    Team getNewTeam(boolean randomName);
 }

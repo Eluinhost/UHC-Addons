@@ -15,10 +15,12 @@ public class BukkitTeamManager implements TeamManager {
     }
 
     @Override
-    public Team getNewTeam()
+    public Team getNewTeam(boolean randomName)
     {
-        Team newTeam = scoreboard.registerNewTeam(nameGenerator.getNextAvailableTeamName());
-        newTeam.setDisplayName(nameGenerator.getRandomTeamDisplayName());
+        String nextName = nameGenerator.getNextAvailableTeamName();
+        Team newTeam = scoreboard.registerNewTeam(nextName);
+
+        newTeam.setDisplayName(randomName ? nameGenerator.getRandomTeamDisplayName() : nextName);
         return newTeam;
     }
 }
