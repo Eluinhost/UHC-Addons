@@ -45,13 +45,15 @@ public class BukkitTeamManager implements TeamManager {
     }
 
     @Override
-    public void deleteAllTeams()
+    public int deleteAllTeams()
     {
         Set<Team> allTeams = scoreboard.getTeams();
 
         for(Team team : allTeams) {
             deleteTeam(team);
         }
+
+        return allTeams.size();
     }
 
     @Override

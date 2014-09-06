@@ -22,8 +22,9 @@ public interface TeamManager {
 
     /**
      * Removes all registered teams from the scoreboard and tells the players in the team about it's deletion
+     * @return the amount of teams deleted
      */
-    void deleteAllTeams();
+    int deleteAllTeams();
 
     /**
      * Deletes the given team and tells all online players in the team about it
