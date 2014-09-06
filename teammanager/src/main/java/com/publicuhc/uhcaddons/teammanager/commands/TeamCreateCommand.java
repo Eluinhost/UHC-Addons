@@ -54,6 +54,11 @@ public class TeamCreateCommand implements Command {
             return;
         }
 
+        if(nonOptions.isEmpty()) {
+            translate.sendMessage("supply one team name", sender);
+            return;
+        }
+
         List<String> invalid = Lists.newArrayList();
 
         for(String name : nonOptions) {
