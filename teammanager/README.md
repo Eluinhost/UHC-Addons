@@ -26,6 +26,16 @@ Permissions:
 
 UHC.teams.delete default op - required to run the command
 
+### Join team
+
+Join a specfic team
+
+`/teamm join teamName`
+
+Permissions:
+
+UHC.teams.join default false - required to run the command
+
 ### Leave team
 
 Leave the team you are in
