@@ -46,6 +46,18 @@ Permissions:
 
 UHC.teams.leave default false - required to run the command
 
+### Add to team
+
+Adds the player to the team
+
+`/teamm add -t teamName player1 player2 player3 ...`
+
+-t = name of the team to add to, required
+
+Permissions:
+
+UHC.teams.add default op - required to run the command
+
 ### Remove from team
 
 Removes players from their teams

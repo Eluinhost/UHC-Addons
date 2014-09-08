@@ -30,8 +30,10 @@ permissions:
         description: Allows use of /teamm leave command
         default: false
     UHC.teams.join:
-        description: Allows use ocf the /teamm join command
+        description: Allows use of the /teamm join command
         default: false
+    UHC.teams.add:
+        description: Allows use of the /teamm add command
     UHC.teams.remove:
         description: Allows use of the /teamm remove command
         default: op
