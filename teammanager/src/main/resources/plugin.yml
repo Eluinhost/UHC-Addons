@@ -26,3 +26,9 @@ permissions:
     UHC.teams.delete:
         description: Allows use of /teamm delete command
         default: op
+    UHC.teams.leave
+        description: Allows use of /teamm leave command
+        default: false
+    UHC.teams.remove:
+        description: Allows use of the /teamm remove command
+        default: op

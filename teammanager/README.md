@@ -1,24 +1,54 @@
 Commands
 --------
 
-All start with teamm. e.g. `teamm create`
-
 ### Create teams
 
 Creates teams with the given names
 
-`create [-r] teamName1 teamName2 ...` OR `create [-r] -n number`
+`/teamm create [-r] teamName1 teamName2 ...` OR `create [-r] -n number`
 
 -r = Give the teams random display names, if not set will use the given name
 -n = Number of teams to create with auto generated names (UHCxxx)
+
+Permissions:
+
+UHC.teams.create default op - required to run the command
 
 ### Delete teams
 
 Deletes the teams with the given names
 
-`delete [-a] [teamName1 teamName2] ...`
+`/teamm delete [-a] [teamName1 teamName2] ...`
 
 -a = Remove all teams
+
+Permissions:
+
+UHC.teams.delete default op - required to run the command
+
+### Leave team
+
+Leave the team you are in
+
+`/teamm leave`
+
+Permissions:
+
+UHC.teams.leave default false - required to run the command
+
+### Remove from team
+
+Removes players from their teams
+
+`/teamm remove player1 player2 player3 ...`
+
+Permissions:
+
+UHC.teams.remove default op - required to run the command
+
+
+
+
 
 ### Join Team
 
