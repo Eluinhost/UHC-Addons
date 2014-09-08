@@ -39,4 +39,21 @@ public interface TeamManager {
      * @return the team if it exists
      */
     Optional<Team> getTeamByName(String name);
+
+    /**
+     * Send a message to all online players in the given team
+     *
+     * @param message the message to send
+     * @param team the team to send to
+     */
+    void sendToTeam(Team team, String message);
+
+    /**
+     * Sends a message to all online players in the given team translated
+     *
+     * @param team the team to send to
+     * @param key the key to look up
+     * @param params the replacement vars for the translation
+     */
+    void sendToTeamTranslated(Team team, String key, Object... params);
 }

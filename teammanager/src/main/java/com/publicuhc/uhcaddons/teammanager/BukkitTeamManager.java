@@ -74,4 +74,24 @@ public class BukkitTeamManager implements TeamManager {
     public Optional<Team> getTeamByName(String name) {
         return Optional.fromNullable(scoreboard.getTeam(name));
     }
+
+    @Override
+    public void sendToTeam(Team team, String message)
+    {
+        for(OfflinePlayer player : team.getPlayers()) {
+            if(player.isOnline()) {
+                ((Player) player).sendMessage(message);
+            }
+        }
+    }
+
+    @Override
+    public void sendToTeamTranslated(Team team, String key, Object... params)
+    {
+        for(OfflinePlayer player : team.getPlayers()) {
+            if(player.isOnline()) {
+                translate.sendMessage(key, (Player) player, params);
+            }
+        }
+    }
 }
