@@ -13,19 +13,6 @@ Addon plugins use UltraHardcore and the included framework to register new featu
 Plugins:
 ========
 
-Border
-------
-
-World border related stuff
-
-###Commands
-
-- [ ] Command for quick creation of borders without manually using WorldEdit
-
-###Features
-
-- [ ] add a WorldBorder-esque knockback thing?
-
 Deaths
 ------
 
