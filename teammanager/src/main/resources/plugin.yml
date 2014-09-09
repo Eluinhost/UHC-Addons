@@ -10,6 +10,9 @@ commands:
     teamm:
         description: Team manager commands
         aliases: [uhcteamm]
+    randomteams:
+        description: Creates random teams
+        aliases: [uhcrandomteams]
     noteam:
         description: List of people not in a team
         aliases: [uhcnoteam]
@@ -40,3 +43,6 @@ permissions:
     UHC.teams.list:
         description: Allows use of the /teamm list command
         default: true
+    UHC.teams.random:
+        description: Allows use of the /randomteams command
+        default: op

@@ -80,35 +80,25 @@ Permissions:
 
 UHC.teams.list default true - required to run the command
 
-
-
-### Join Team
-
-Join a team
-
-### Leave Team
-
-Leave a team
-
-### Empty Team
-
-Empties the team of all of its players and leave it intact
-
-`empty [-a] teamName1 teamName2 ...`
-
--a = Empty all teams
-
-### List teams
-
-`list [-e]`
-
--e = Show empty teams too
-
 ### Random Teams
 
-`random -n amount`
+Generates n amount of teams with as even as possible amount of memebers.
+Uses all players online excluding those already in a team.
 
--n = Amount of teams to create, will make team sizes as even as possible
+`randomteams [-n amount]`
+
+-n = Amount of teams to create, will make team sizes as even as possible, default 4, must be <= amount of online players
+already in a team
+
+Permissions:
+
+UHC.teams.random default op - required to run the command
+
+
+
+
+
+
 
 ### Teamup
 
