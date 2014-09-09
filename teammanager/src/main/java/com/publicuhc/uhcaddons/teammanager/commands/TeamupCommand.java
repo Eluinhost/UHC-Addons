@@ -10,6 +10,7 @@ import com.publicuhc.ultrahardcore.framework.routing.annotation.CommandOptions;
 import com.publicuhc.ultrahardcore.framework.routing.annotation.OptionsMethod;
 import com.publicuhc.ultrahardcore.framework.routing.annotation.PermissionRestriction;
 import com.publicuhc.ultrahardcore.framework.routing.converters.OnlinePlayerValueConverter;
+import com.publicuhc.ultrahardcore.framework.shaded.inject.Inject;
 import com.publicuhc.ultrahardcore.framework.shaded.joptsimple.OptionDeclarer;
 import com.publicuhc.ultrahardcore.framework.shaded.joptsimple.OptionSet;
 import com.publicuhc.ultrahardcore.framework.translate.Translate;
@@ -31,6 +32,7 @@ public class TeamupCommand implements Command
 
     public static final String TEAMUP_PERMISSION = "UHC.teams.teamup";
 
+    @Inject
     protected TeamupCommand(Translate translate, Scoreboard scoreboard, TeamManager manager)
     {
         this.translate = translate;
