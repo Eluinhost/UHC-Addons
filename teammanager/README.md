@@ -68,7 +68,17 @@ Permissions:
 
 UHC.teams.remove default op - required to run the command
 
+### List teams
 
+Lists all of the players in each team
+
+`/teamm list [-a]`
+
+-a = Show empty teams too
+
+Permissions:
+
+UHC.teams.list default true - required to run the command
 
 
 

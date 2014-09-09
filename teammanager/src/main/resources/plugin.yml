@@ -37,3 +37,6 @@ permissions:
     UHC.teams.remove:
         description: Allows use of the /teamm remove command
         default: op
+    UHC.teams.list:
+        description: Allows use of the /teamm list command
+        default: true
