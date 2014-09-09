@@ -96,8 +96,9 @@ public class RandomTeamsCommand implements Command
 
             for(Player p : teamGroup) {
                 newTeam.addPlayer(p);
-                translate.sendMessage("your team", sender, Joiner.on(",").join(playerNames));
             }
+
+            manager.sendToTeamTranslated(newTeam, "your team", Joiner.on(",").join(playerNames));
         }
 
         translate.sendMessage("created", sender, splitup.size());
