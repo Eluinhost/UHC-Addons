@@ -55,3 +55,9 @@ permissions:
     UHC.teams.pm:
         description: Allows use of the /pmt command
         default: true
+    UHC.teams.requests.request:
+        description: Allows use of the /reqteam command to request a team
+        default: true
+    UHC.teams.requests.admin:
+        description: Allows use of the /reqteam accept|deny|list commands
+        default: op

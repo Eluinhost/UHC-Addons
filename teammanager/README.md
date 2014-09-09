@@ -8,6 +8,7 @@ Creates teams with the given names
 `/teamm create [-r] teamName1 teamName2 ...` OR `create [-r] -n number`
 
 -r = Give the teams random display names, if not set will use the given name
+
 -n = Number of teams to create with auto generated names (UHCxxx)
 
 Permissions:
@@ -87,6 +88,7 @@ Adds all of the players given into a new team
 `/teamm teamup [-t teamName] [-n display] name1 name2 name3 name4`
 
 -t = team name to create, if not provided with auto-generate a new one
+
 -n = display name for the new team, if not provided will use a random one
 
 Permissions:
@@ -129,11 +131,6 @@ Permissions:
 
 UHC.teams.pm default true - required to run the command
 
-
-
-
-
-
 Team requests
 -------------
 
@@ -143,14 +140,36 @@ Request to team with players
 
 `/reqteam request name1 name2 name3 name4 ...`
 
-### Accept team request
+Permissions:
 
-`/reqteam accept -t teamName [-d  displayName] id1 id2 id3 ...`
-
-### Deny team request
-
-`/reqteam deny id1 id2 id3 ...`
+UHC.teams.requests.request default true - required to run the command
 
 ### List requests
 
+List all of the open requests
+
 `/reqteam list`
+
+Permissions:
+
+UHC.teams.requests.admin default op - required to run the command
+
+### Accept team request
+
+`/reqteam accept [-f] requestId1 requestId2 requestId3 ...`
+
+-f = Force creation of the team even if all of it's players are not online (will skip offline players)
+
+Permissions:
+
+UHC.teams.requests.admin default op - required to run the command
+
+### Deny team request
+
+Denies the requests
+
+`/reqteam deny requestId1 requestId2 requestId3 ...`
+
+Permissions:
+
+UHC.teams.requests.admin default op - required to run the command
