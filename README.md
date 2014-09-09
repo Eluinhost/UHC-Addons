@@ -10,7 +10,14 @@ UHC Core relies on PluginFramework to handle dependencies/commands e.t.c.
 
 Addon plugins use UltraHardcore and the included framework to register new features/commands for the plugin
 
-Plugins:
+Completed Addons:
+=================
+
+[Scatter](scatter/README.md)
+[Potions](potions/README.md)
+[Team Manager](teammanager/README.md)
+
+TODO Plugins:
 ========
 
 Deaths
@@ -43,27 +50,6 @@ Everything to do with player heads
 - [ ] Players drop heads on death
 - [ ] Craft golden heads
 
-Team Manager
-------------
-
-Lots of commands to deal with teams and creation thereof
-
-###Commands
-
-- [ ] Join Team
-- [ ] Leave Team
-- [ ] Random Teams
-- [ ] Team request
-- [ ] Teamup
-- [ ] Empty/Clear teams
-- [ ] Check non-teamed players
-- [ ] List teams
-- [ ] PM Team
-
-###Features
-
-None
-
 Timers
 ------
 
@@ -76,34 +62,3 @@ Timer related stuff
 ###Features
 
 None
-
-Scatter
--------
-
-[Documentation](scatter/README.md)
-
-Addon for scatter players within worlds
-
-###Commands
-
-- [x] Scatter command with teams support
-   - [ ] optional amount/tick
-
-###Features
-
-- [ ] Auto scatter on respawn?
-
-Potions
--------
-
-Potion related things
-
-###Commands
-
-None
-
-###Features
-
-- [x] Disable splash
-- [x] Disable Tier 2
-- [x] Disable Absorb
