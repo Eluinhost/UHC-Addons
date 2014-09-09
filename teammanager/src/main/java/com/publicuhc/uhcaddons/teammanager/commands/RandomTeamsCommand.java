@@ -27,9 +27,9 @@ import java.util.List;
 
 public class RandomTeamsCommand implements Command
 {
-    private Translate translate;
-    private TeamManager manager;
-    private Scoreboard scoreboard;
+    private final Translate translate;
+    private final TeamManager manager;
+    private final Scoreboard scoreboard;
 
     public static final String RANDOM_TEAMS_PERMISSION = "UHC.teams.random";
 
