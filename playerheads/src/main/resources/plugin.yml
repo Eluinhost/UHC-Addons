@@ -1,0 +1,16 @@
+name: ${addon-name}
+main: ${main-class}
+version: ${project.version}
+description: Player heads addon plugin for UHC
+author: ghowden/Eluinhost
+website: wiki.publicuhc.com
+database: false
+depend: [UltraHardcore]
+commands:
+    givehead:
+        description: Gives a player head
+        aliases: [uhcgivehead]
+permissions:
+    UHC.heads.give:
+        description: Allows use of the /givehead command
+        default: op

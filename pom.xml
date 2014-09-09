@@ -13,6 +13,7 @@
         <module>scatter</module>
         <module>teammanager</module>
         <module>potions</module>
+        <module>playerheads</module>
     </modules>
 
     <licenses>
