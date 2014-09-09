@@ -49,3 +49,6 @@ permissions:
     UHC.teams.teamup
         description: Allows use of the /teamm teamup command
         default: op
+    UHC.teams.noteam:
+        description: Allows use of the /noteam command
+        default: true

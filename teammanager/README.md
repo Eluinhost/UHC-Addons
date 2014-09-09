@@ -107,20 +107,21 @@ Permissions:
 
 UHC.teams.random default op - required to run the command
 
-
-
-
-
-
-
-
-
 No team
 -------
 
 Lists all online players without a team
 
 `/noteam`
+
+Permissions:
+
+UHC.teams.noteam default true - required to run the command
+
+
+
+
+
 
 Pm team
 -------
