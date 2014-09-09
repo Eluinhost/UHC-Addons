@@ -52,3 +52,6 @@ permissions:
     UHC.teams.noteam:
         description: Allows use of the /noteam command
         default: true
+    UHC.teams.pm:
+        description: Allows use of the /pmt command
+        default: true

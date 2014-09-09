@@ -118,17 +118,21 @@ Permissions:
 
 UHC.teams.noteam default true - required to run the command
 
-
-
-
-
-
 Pm team
 -------
 
 Send a message to everyone in your team
 
 `/pmt message goes here`
+
+Permissions:
+
+UHC.teams.pm default true - required to run the command
+
+
+
+
+
 
 Team requests
 -------------
