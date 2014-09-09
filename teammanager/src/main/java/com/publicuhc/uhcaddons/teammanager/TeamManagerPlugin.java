@@ -1,7 +1,7 @@
 package com.publicuhc.uhcaddons.teammanager;
 
 import com.google.common.collect.Lists;
-import com.publicuhc.uhcaddons.teammanager.torefactor.TeamCommands;
+import com.publicuhc.uhcaddons.teammanager.commands.*;
 import com.publicuhc.ultrahardcore.UltraHardcore;
 import com.publicuhc.ultrahardcore.api.Command;
 import com.publicuhc.ultrahardcore.api.UHCAddonConfiguration;
@@ -29,7 +29,15 @@ public class TeamManagerPlugin extends JavaPlugin implements UHCAddonConfigurati
     @Override
     public void configureCommands(Multibinder<Command> commandMultibinder)
     {
-        commandMultibinder.addBinding().to(TeamCommands.class);
+        commandMultibinder.addBinding().to(NoTeamCommand.class);
+        commandMultibinder.addBinding().to(PmTeamCommand.class);
+        commandMultibinder.addBinding().to(RandomTeamsCommand.class);
+        commandMultibinder.addBinding().to(TeamCreateCommand.class);
+        commandMultibinder.addBinding().to(TeamDeleteCommand.class);
+        commandMultibinder.addBinding().to(TeamJoinCommand.class);
+        commandMultibinder.addBinding().to(TeamLeaveCommand.class);
+        commandMultibinder.addBinding().to(TeamRequestsCommand.class);
+        commandMultibinder.addBinding().to(TeamupCommand.class);
     }
 
     @Override
