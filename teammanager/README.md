@@ -80,12 +80,25 @@ Permissions:
 
 UHC.teams.list default true - required to run the command
 
+### Teamup
+
+Adds all of the players given into a new team
+
+`/teamm teamup [-t teamName] [-n display] name1 name2 name3 name4`
+
+-t = team name to create, if not provided with auto-generate a new one
+-n = display name for the new team, if not provided will use a random one
+
+Permissions:
+
+UHC.teams.teamup default op - required to run the command
+
 ### Random Teams
 
 Generates n amount of teams with as even as possible amount of memebers.
 Uses all players online excluding those already in a team.
 
-`randomteams [-n amount]`
+`/randomteams [-n amount]`
 
 -n = Amount of teams to create, will make team sizes as even as possible, default 4, must be <= amount of online players
 already in a team
@@ -100,14 +113,7 @@ UHC.teams.random default op - required to run the command
 
 
 
-### Teamup
 
-Adds all of the players given into a new team
-
-`teamup -t teamName [-n display] name1 name2 name3 name4`
-
--t = team name to add into or create
--n = display name for the new team
 
 No team
 -------

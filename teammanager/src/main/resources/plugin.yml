@@ -46,3 +46,6 @@ permissions:
     UHC.teams.random:
         description: Allows use of the /randomteams command
         default: op
+    UHC.teams.teamup
+        description: Allows use of the /teamm teamup command
+        default: op
