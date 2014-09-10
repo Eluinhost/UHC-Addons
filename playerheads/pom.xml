@@ -11,6 +11,15 @@
 
     <artifactId>playerheads</artifactId>
 
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url>src/main/resources/LICENSE</url>
+            <distribution>repo</distribution>
+            <comments>License for playerheads</comments>
+        </license>
+    </licenses>
+
     <properties>
         <addon-name>UHC-PlayerHeads</addon-name>
         <main-class>${project.groupId}.${project.artifactId}.UhcPlayerHeadsPlugin</main-class>
