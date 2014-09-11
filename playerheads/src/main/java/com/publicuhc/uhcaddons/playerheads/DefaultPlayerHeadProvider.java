@@ -49,6 +49,6 @@ public class DefaultPlayerHeadProvider implements PlayerHeadProvider {
     @Override
     public ItemStack getPlayerHead(Player player)
     {
-        return null;
+        return getPlayerHead(player.getName());
     }
 }
