@@ -26,10 +26,12 @@
 
 package com.publicuhc.uhcaddons.playerheads;
 
+import com.google.common.collect.Lists;
 import com.publicuhc.ultrahardcore.UltraHardcore;
 import com.publicuhc.ultrahardcore.api.Command;
 import com.publicuhc.ultrahardcore.api.UHCAddonConfiguration;
 import com.publicuhc.ultrahardcore.api.UHCFeature;
+import com.publicuhc.ultrahardcore.framework.shaded.inject.Module;
 import com.publicuhc.ultrahardcore.framework.shaded.inject.multibindings.Multibinder;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -40,7 +42,7 @@ public class UhcPlayerHeadsPlugin extends JavaPlugin implements UHCAddonConfigur
     public void onEnable()
     {
         UltraHardcore uhc = (UltraHardcore) Bukkit.getPluginManager().getPlugin("UltraHardcore");
-        uhc.registerAddon(this, this);
+        uhc.registerAddon(this, this, Lists.newArrayList((Module) new PlayerHeadModule()));
     }
 
     @Override
