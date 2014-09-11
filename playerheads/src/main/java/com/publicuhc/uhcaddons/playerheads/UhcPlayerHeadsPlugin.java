@@ -28,6 +28,7 @@ package com.publicuhc.uhcaddons.playerheads;
 
 import com.google.common.collect.Lists;
 import com.publicuhc.uhcaddons.playerheads.commands.GiveHeadCommand;
+import com.publicuhc.uhcaddons.playerheads.commands.HeadHealthCommand;
 import com.publicuhc.uhcaddons.playerheads.features.GoldenHeadFeature;
 import com.publicuhc.uhcaddons.playerheads.features.HeadDropFeature;
 import com.publicuhc.ultrahardcore.UltraHardcore;
@@ -51,6 +52,7 @@ public class UhcPlayerHeadsPlugin extends JavaPlugin implements UHCAddonConfigur
     @Override
     public void configureCommands(Multibinder<Command> commandMultibinder) {
         commandMultibinder.addBinding().to(GiveHeadCommand.class);
+        commandMultibinder.addBinding().to(HeadHealthCommand.class);
     }
 
     @Override

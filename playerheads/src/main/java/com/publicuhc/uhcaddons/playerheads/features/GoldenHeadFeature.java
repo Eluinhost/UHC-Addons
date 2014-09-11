@@ -126,6 +126,11 @@ public class GoldenHeadFeature extends UHCFeature
         }
     }
 
+    public int getAmountTotal()
+    {
+        return amountTotal;
+    }
+
     public void setAmountTotal(int amount)
     {
         this.amountTotal = amount;

@@ -17,6 +17,18 @@ Permissions:
 
 UHC.heads.give default op - required to use the command
 
+### Healing amount command
+
+`/headhealth [-a amount]`
+
+-a = Amount of half hearts to heal from golden heads, if not provided just tells you how much it is set to
+
+NOTE: if half hearts is set below a regular golden apple it will still heal the amount of a golden apple
+
+Permissions:
+
+UHC.heads.sethealth default op - required to run the command
+
 ### Head drop feature
 
 Feature Name: PlayerHeads

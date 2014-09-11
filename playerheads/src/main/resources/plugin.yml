@@ -10,6 +10,9 @@ commands:
     givehead:
         description: Gives a player head
         aliases: [uhcgivehead]
+    headhealth:
+        description: Sets the health healed from golden heads
+        aliases: [uhcheadhealth]
 permissions:
     UHC.heads.give:
         description: Allows use of the /givehead command
@@ -23,3 +26,6 @@ permissions:
     UHC.heads.craft:
         description: Allows crafting of golden heads
         default: true
+    UHC.heads.sethealth:
+        descriptions: Allows use of the /headhealth command
+        default: op
