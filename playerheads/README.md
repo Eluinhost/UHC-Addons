@@ -16,3 +16,23 @@ nonOptions = list of names to give a head for
 Permissions:
 
 UHC.heads.give default op - required to use the command
+
+### Head drop feature
+
+Feature Name: PlayerHeads
+
+Players will drop their heads on death
+
+Permissions:
+
+UHC.heads.onStake default true, heads will attempt to be placed on a stake on death
+UHC.heads.drop default true, heads will drop on death
+
+Configuration:
+
+```
+attempt on stake: true          # Attempt to place stakes
+chance to drop: 100             # Chance to drop on death
+drop on pvp death only: true    # Limit heads to drop on PvP only
+ignore teamkills: true          # Never drop on teamkills
+```

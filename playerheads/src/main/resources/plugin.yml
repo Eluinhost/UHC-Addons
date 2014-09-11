@@ -14,3 +14,9 @@ permissions:
     UHC.heads.give:
         description: Allows use of the /givehead command
         default: op
+    UHC.heads.stake:
+        description: Heads on death will attempted to be placed on a 'stake'
+        default: true
+    UHC.heads.drop:
+        description: Heads will attempt to drop on death
+        default: true
