@@ -26,12 +26,19 @@
 
 package com.publicuhc.uhcaddons.playerheads;
 
+import com.google.common.collect.Lists;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
+import java.util.List;
+
 public class DefaultPlayerHeadProvider implements PlayerHeadProvider {
+
+    public static final String HEAD_NAME = ChatColor.GOLD + "Golden Head";
 
     @Override
     public ItemStack getPlayerHead(String name)
@@ -50,5 +57,34 @@ public class DefaultPlayerHeadProvider implements PlayerHeadProvider {
     public ItemStack getPlayerHead(Player player)
     {
         return getPlayerHead(player.getName());
+    }
+
+    @Override
+    public ItemStack getGoldenHead()
+    {
+        ItemStack itemStack = new ItemStack(Material.GOLDEN_APPLE, 1);
+        ItemMeta meta = itemStack.getItemMeta();
+        meta.setDisplayName(HEAD_NAME);
+
+        //add it's lore
+        List<String> lore = Lists.newArrayList("Some say consuming the head of a", "fallen foe strengthens the blood");
+        meta.setLore(lore);
+        itemStack.setItemMeta(meta);
+
+        return itemStack;
+    }
+
+    @Override
+    public boolean isGoldenHead(ItemStack itemStack)
+    {
+        if (itemStack.getType() == Material.GOLDEN_APPLE) {
+            ItemMeta im = itemStack.getItemMeta();
+
+            if (im.hasDisplayName() && im.getDisplayName().equals(HEAD_NAME)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

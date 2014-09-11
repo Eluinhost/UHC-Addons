@@ -46,4 +46,19 @@ public interface PlayerHeadProvider {
      * @return the head set for the player
      */
     ItemStack getPlayerHead(Player player);
+
+    /**
+     * Gets a golden head itemstack
+     *
+     * @return the golden head itemstack
+     */
+    ItemStack getGoldenHead();
+
+    /**
+     * Check if the provided ItemStack is a golden head
+     *
+     * @param itemStack the stack to check
+     * @return true if stack is a golden head, false otherwise
+     */
+    boolean isGoldenHead(ItemStack itemStack);
 }
