@@ -1,5 +1,5 @@
 /*
- * PlayerHeadModule.java
+ * RecipeChecker.java
  *
  * The MIT License (MIT)
  *
@@ -26,14 +26,33 @@
 
 package com.publicuhc.uhcaddons.playerheads;
 
-import com.publicuhc.ultrahardcore.framework.shaded.inject.AbstractModule;
-import com.publicuhc.ultrahardcore.framework.shaded.inject.Singleton;
+import org.bukkit.inventory.Recipe;
 
-public class PlayerHeadModule extends AbstractModule {
-    @Override
-    protected void configure()
-    {
-        bind(PlayerHeadProvider.class).to(DefaultPlayerHeadProvider.class).in(Singleton.class);
-        bind(RecipeChecker.class).to(BukkitRecipeChecker.class).in(Singleton.class);
-    }
+public interface RecipeChecker
+{
+    /**
+     * Checks if both recipes are equal.<br>
+     * Compares both ingredients and results.<br>
+     * <br>
+     * NOTE: If both arguments are null it returns true.
+     *
+     * @param recipe1
+     * @param recipe2
+     * @return true if ingredients and results match, false otherwise.
+     * @throws IllegalArgumentException if recipe is other than ShapedRecipe, ShapelessRecipe or FurnaceRecipe.
+     */
+    boolean areEqual(Recipe recipe1, Recipe recipe2);
+
+    /**
+     * Checks if recipes are similar.<br>
+     * Only checks ingredients, not results.<br>
+     * <br>
+     * NOTE: If both arguments are null it returns true. <br>
+     *
+     * @param recipe1
+     * @param recipe2
+     * @return true if ingredients match, false otherwise.
+     * @throws IllegalArgumentException if recipe is other than ShapedRecipe, ShapelessRecipe or FurnaceRecipe.
+     */
+    boolean areSimilar(Recipe recipe1, Recipe recipe2);
 }
