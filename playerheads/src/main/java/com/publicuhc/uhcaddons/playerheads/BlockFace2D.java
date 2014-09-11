@@ -28,7 +28,8 @@ package com.publicuhc.uhcaddons.playerheads;
 
 import org.bukkit.block.BlockFace;
 
-public enum BlockFace2D{
+public enum BlockFace2D
+{
 
     NORTH(BlockFace.NORTH),
     EAST(BlockFace.EAST),
@@ -52,37 +53,9 @@ public enum BlockFace2D{
     /**
      * @param blockFace the block face to represent
      */
-    BlockFace2D(BlockFace blockFace) {
+    BlockFace2D(BlockFace blockFace)
+    {
         m_blockFace = blockFace;
-    }
-
-    /**
-     * @return amount of X coordinates
-     */
-    public int getX() {
-        return -m_blockFace.getModX();
-    }
-
-    /**
-     * @return amount of Z-coordinates
-     */
-    public int getZ() {
-        return m_blockFace.getModZ();
-    }
-
-    /**
-     * @return the block face
-     */
-    public BlockFace getBlockFace(){
-        return m_blockFace;
-    }
-
-    /**
-     * @return The angle between the x and z
-     *
-     */
-    public double getAngle(){
-        return StrictMath.atan2(getX(), getZ());
     }
 
     /**
@@ -91,22 +64,55 @@ public enum BlockFace2D{
      * @param lookAngle the direction in radians
      * @return the closest block face in the 2D plane
      */
-    public static BlockFace2D getClosest(double lookAngle){
+    public static BlockFace2D getClosest(double lookAngle)
+    {
         BlockFace2D[] directions = BlockFace2D.values();
         BlockFace2D best = directions[0];
         double angle = Math.abs(best.getAngle());
-        for(BlockFace2D bfv : BlockFace2D.values()){
-            double a = lookAngle-bfv.getAngle();
-            if(a > Math.PI*2){
-                a -= Math.PI*2;
-            }else if(a < 0){
-                a += Math.PI*2;
+        for(BlockFace2D bfv : BlockFace2D.values()) {
+            double a = lookAngle - bfv.getAngle();
+            if(a > Math.PI * 2) {
+                a -= Math.PI * 2;
+            } else if(a < 0) {
+                a += Math.PI * 2;
             }
-            if(Math.abs(a) < angle){
+            if(Math.abs(a) < angle) {
                 best = bfv;
                 angle = Math.abs(a);
             }
         }
         return best;
+    }
+
+    /**
+     * @return amount of X coordinates
+     */
+    public int getX()
+    {
+        return -m_blockFace.getModX();
+    }
+
+    /**
+     * @return amount of Z-coordinates
+     */
+    public int getZ()
+    {
+        return m_blockFace.getModZ();
+    }
+
+    /**
+     * @return the block face
+     */
+    public BlockFace getBlockFace()
+    {
+        return m_blockFace;
+    }
+
+    /**
+     * @return The angle between the x and z
+     */
+    public double getAngle()
+    {
+        return StrictMath.atan2(getX(), getZ());
     }
 }

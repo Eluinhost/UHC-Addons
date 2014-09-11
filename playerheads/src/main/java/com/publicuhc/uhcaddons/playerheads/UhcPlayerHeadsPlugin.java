@@ -40,7 +40,8 @@ import com.publicuhc.ultrahardcore.framework.shaded.inject.multibindings.Multibi
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class UhcPlayerHeadsPlugin extends JavaPlugin implements UHCAddonConfiguration {
+public class UhcPlayerHeadsPlugin extends JavaPlugin implements UHCAddonConfiguration
+{
 
     @Override
     public void onEnable()
@@ -50,13 +51,15 @@ public class UhcPlayerHeadsPlugin extends JavaPlugin implements UHCAddonConfigur
     }
 
     @Override
-    public void configureCommands(Multibinder<Command> commandMultibinder) {
+    public void configureCommands(Multibinder<Command> commandMultibinder)
+    {
         commandMultibinder.addBinding().to(GiveHeadCommand.class);
         commandMultibinder.addBinding().to(HeadHealthCommand.class);
     }
 
     @Override
-    public void configureFeatures(Multibinder<UHCFeature> uhcFeatureMultibinder) {
+    public void configureFeatures(Multibinder<UHCFeature> uhcFeatureMultibinder)
+    {
         uhcFeatureMultibinder.addBinding().to(HeadDropFeature.class);
         uhcFeatureMultibinder.addBinding().to(GoldenHeadFeature.class);
     }

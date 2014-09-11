@@ -42,11 +42,10 @@ import java.util.List;
 
 public class PmTeamCommand implements Command
 {
+    public static final String PM_TEAM_PERMISSION = "UHC.teams.pm";
     private final Translate translate;
     private final TeamManager manager;
     private final Scoreboard scoreboard;
-
-    public static final String PM_TEAM_PERMISSION = "UHC.teams.pm";
 
     @Inject
     protected PmTeamCommand(Translate translate, Scoreboard scoreboard, TeamManager manager)

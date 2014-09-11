@@ -57,7 +57,8 @@ import org.bukkit.scoreboard.Team;
 
 import java.util.*;
 
-public class ScatterCommand implements Command {
+public class ScatterCommand implements Command
+{
 
     private final List<Material> mats = new ArrayList<Material>();
     private final int maxAttempts;
@@ -109,8 +110,8 @@ public class ScatterCommand implements Command {
         List<DeadZone> baseDeadZones = new ArrayList<DeadZone>();
         if(min > 0) {
             //add dead zones for all not scattered players
-            for (Player player : Bukkit.getOnlinePlayers()) {
-                if (!toScatter.contains(player)) {
+            for(Player player : Bukkit.getOnlinePlayers()) {
+                if(!toScatter.contains(player)) {
                     baseDeadZones.add(deadZoneBuilder.buildForLocation(player.getLocation()));
                 }
             }
@@ -146,7 +147,7 @@ public class ScatterCommand implements Command {
         List<Location> locations;
         try {
             locations = scatterer.getScatterLocations(amount);
-        } catch (ScatterLocationException e) {
+        } catch(ScatterLocationException e) {
             translate.sendMessage("couldnt find locations", sender);
             return;
         }

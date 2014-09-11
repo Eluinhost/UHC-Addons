@@ -35,7 +35,8 @@ import org.bukkit.scoreboard.Team;
 import java.util.List;
 import java.util.Random;
 
-public class DefaultTeamNameGenerator implements TeamNameGenerator {
+public class DefaultTeamNameGenerator implements TeamNameGenerator
+{
 
     private final Scoreboard scoreboard;
     private final FileConfiguration config;
@@ -56,7 +57,8 @@ public class DefaultTeamNameGenerator implements TeamNameGenerator {
     }
 
     @Override
-    public String getNextAvailableTeamName() {
+    public String getNextAvailableTeamName()
+    {
         int count = 0;
         while(true) {
             String teamName = config.getString("prefix") + count;
@@ -71,7 +73,8 @@ public class DefaultTeamNameGenerator implements TeamNameGenerator {
     }
 
     @Override
-    public String getRandomTeamDisplayName() {
+    public String getRandomTeamDisplayName()
+    {
         List<String> adjectives = config.getStringList("adjectives");
         List<String> nouns = config.getStringList("nouns");
 

@@ -53,12 +53,10 @@ import java.util.Set;
 
 public class TeamRequestsCommand implements Command
 {
-    private final Translate translate;
-    private final TeamManager manager;
-
     public static final String REQUEST_PERMISSION = "UHC.teams.requests.request";
     public static final String ADMIN_PERMISSION = "UHC.teams.requests.admin";
-
+    private final Translate translate;
+    private final TeamManager manager;
     private Multimap<String, String> requests = ArrayListMultimap.create();
 
     @Inject
@@ -118,7 +116,8 @@ public class TeamRequestsCommand implements Command
 
         Set<String> invalids = Sets.newHashSet();
 
-        outer: for(String toAccept : args) {
+        outer:
+        for(String toAccept : args) {
             if(!requests.containsKey(toAccept)) {
                 invalids.add(toAccept);
                 continue;

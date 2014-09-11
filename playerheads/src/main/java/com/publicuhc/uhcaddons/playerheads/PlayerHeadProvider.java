@@ -30,7 +30,8 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-public interface PlayerHeadProvider {
+public interface PlayerHeadProvider
+{
 
     /**
      * Get a player head for the given name
@@ -66,7 +67,7 @@ public interface PlayerHeadProvider {
     /**
      * Adds the player lore to the given itemstack
      *
-     * @param name the name to add
+     * @param name      the name to add
      * @param itemStack the itemstack to add the lore to
      */
     void addPlayerLore(ItemStack itemStack, String name);
@@ -75,14 +76,14 @@ public interface PlayerHeadProvider {
      * Adds the player lore to the given itemstack
      *
      * @param itemStack the itemstack to add the lore to
-     * @param player the player
+     * @param player    the player
      */
     void addPlayerLore(ItemStack itemStack, Player player);
 
     /**
      * Sets the block given to head of the player facing in the direction the player is facing
      *
-     * @param p the player
+     * @param p         the player
      * @param headBlock the block to set
      */
     void setBlockAsHead(Player p, Block headBlock);
@@ -90,7 +91,7 @@ public interface PlayerHeadProvider {
     /**
      * Sets the block given to head of the player
      *
-     * @param name the player name
+     * @param name      the player name
      * @param direction the direction to face
      * @param headBlock the block to set
      */

@@ -79,12 +79,13 @@ public class GoldenHeadFeature extends UHCFeature
     }
 
     @EventHandler(ignoreCancelled = true)
-    public void onPreCraftEvent(PrepareItemCraftEvent event) {
+    public void onPreCraftEvent(PrepareItemCraftEvent event)
+    {
         if(isEnabled() && checker.areSimilar(event.getRecipe(), recipe)) {
             //get the name of the used head
             String name = "INVALID PLAYER";
-            for (ItemStack itemStack : event.getInventory().getContents()) {
-                if (itemStack.getType() == Material.SKULL_ITEM) {
+            for(ItemStack itemStack : event.getInventory().getContents()) {
+                if(itemStack.getType() == Material.SKULL_ITEM) {
                     SkullMeta sm = (SkullMeta) itemStack.getItemMeta();
                     name = sm.getOwner();
                 }
@@ -95,7 +96,8 @@ public class GoldenHeadFeature extends UHCFeature
     }
 
     @Override
-    protected void enableCallback() {
+    protected void enableCallback()
+    {
         //Make a recipe that will return a golden apple when the right shape is made
         ItemStack headStack = provider.getGoldenHead();
 
@@ -116,9 +118,10 @@ public class GoldenHeadFeature extends UHCFeature
     }
 
     @Override
-    protected void disableCallback() {
+    protected void disableCallback()
+    {
         Iterator<Recipe> recipeIterator = Bukkit.recipeIterator();
-        while (recipeIterator.hasNext()) {
+        while(recipeIterator.hasNext()) {
             //if it's a golden apple named like ours remove it
             if(provider.isGoldenHead(recipeIterator.next().getResult())) {
                 recipeIterator.remove();

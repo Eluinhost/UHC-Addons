@@ -45,13 +45,12 @@ import java.util.Set;
 
 public class TeamJoinCommand implements Command
 {
+    public static final String TEAM_JOIN_PERMISSION = "UHC.teams.join";
+    public static final String TEAM_ADD_PERMISSION = "UHC.teams.add";
     private Translate translate;
     private TeamManager manager;
     private TeamValueConverter teamValueConverter;
     private Scoreboard scoreboard;
-
-    public static final String TEAM_JOIN_PERMISSION = "UHC.teams.join";
-    public static final String TEAM_ADD_PERMISSION = "UHC.teams.add";
 
     @Inject
     protected TeamJoinCommand(Translate translate, Scoreboard scoreboard, TeamManager manager, TeamValueConverter teamValueConverter)

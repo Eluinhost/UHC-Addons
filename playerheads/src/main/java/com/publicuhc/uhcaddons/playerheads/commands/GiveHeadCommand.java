@@ -44,12 +44,12 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 
-public class GiveHeadCommand implements Command {
-
-    private PlayerHeadProvider provider;
-    private Translate translate;
+public class GiveHeadCommand implements Command
+{
 
     public static final String GIVE_HEAD_PERMISSION = "UHC.heads.give";
+    private PlayerHeadProvider provider;
+    private Translate translate;
 
     @Inject
     public GiveHeadCommand(PlayerHeadProvider provider, Translate translate)
@@ -75,7 +75,7 @@ public class GiveHeadCommand implements Command {
 
         Player sendTo;
 
-        if (set.has("p")) {
+        if(set.has("p")) {
             sendTo = p[0];
         } else {
             if(!(sender instanceof Player)) {

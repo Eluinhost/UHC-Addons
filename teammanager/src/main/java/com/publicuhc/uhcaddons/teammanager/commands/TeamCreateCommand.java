@@ -45,7 +45,8 @@ import org.bukkit.scoreboard.Team;
 
 import java.util.List;
 
-public class TeamCreateCommand implements Command {
+public class TeamCreateCommand implements Command
+{
 
     public static final String TEAM_CREATE_PERMISSION = "UHC.teams.create";
 

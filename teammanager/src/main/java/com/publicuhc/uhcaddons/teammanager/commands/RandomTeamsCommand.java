@@ -53,11 +53,10 @@ import java.util.List;
 
 public class RandomTeamsCommand implements Command
 {
+    public static final String RANDOM_TEAMS_PERMISSION = "UHC.teams.random";
     private final Translate translate;
     private final TeamManager manager;
     private final Scoreboard scoreboard;
-
-    public static final String RANDOM_TEAMS_PERMISSION = "UHC.teams.random";
 
     @Inject
     protected RandomTeamsCommand(Translate translate, TeamManager manager, Scoreboard scoreboard)
@@ -70,12 +69,13 @@ public class RandomTeamsCommand implements Command
     /**
      * Splits the list into even sized lists
      *
-     * @param list the list to split
+     * @param list  the list to split
      * @param count the number of lists to make
-     * @param <T> type
+     * @param <T>   type
      * @return a list of the split lists
      */
-    public static <T> List<List<T>> split(List<T> list, int count) {
+    public static <T> List<List<T>> split(List<T> list, int count)
+    {
         Validate.isTrue(list.size() >= count, "List must be >= to the amount of requested lists");
 
         int amountPerList = (int) Math.ceil((double) list.size() / (double) count);

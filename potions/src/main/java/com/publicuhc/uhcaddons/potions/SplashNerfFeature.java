@@ -48,11 +48,12 @@ public class SplashNerfFeature extends UHCFeature
     }
 
     @EventHandler
-    public void onInventoryClickEvent(InventoryClickEvent ice) {
+    public void onInventoryClickEvent(InventoryClickEvent ice)
+    {
         //if we're enabled
-        if (isEnabled()) {
+        if(isEnabled()) {
             //if it's not a brewing stand skip
-            if (ice.getInventory().getType() != InventoryType.BREWING) {
+            if(ice.getInventory().getType() != InventoryType.BREWING) {
                 return;
             }
 
@@ -60,23 +61,23 @@ public class SplashNerfFeature extends UHCFeature
             boolean cancel = false;
 
             //if the player is shift clicking
-            if (ice.isShiftClick()) {
+            if(ice.isShiftClick()) {
                 //if tier 2 is disabled and they're clicking glowstone and don't have permission
-                if (ice.getCurrentItem().getType() == Material.SULPHUR && ice.getWhoClicked().hasPermission(DENY_SPLASH)) {
+                if(ice.getCurrentItem().getType() == Material.SULPHUR && ice.getWhoClicked().hasPermission(DENY_SPLASH)) {
                     cancel = true;
                 }
             }
 
             //if its the fuel slot that was clicked
-            if (ice.getSlotType() == InventoryType.SlotType.FUEL) {
+            if(ice.getSlotType() == InventoryType.SlotType.FUEL) {
                 //if tier 2 disabled and glowstone is on the cursor and no permission
-                if (iv.getCursor().getType() == Material.SULPHUR && ice.getWhoClicked().hasPermission(DENY_SPLASH)) {
+                if(iv.getCursor().getType() == Material.SULPHUR && ice.getWhoClicked().hasPermission(DENY_SPLASH)) {
                     cancel = true;
                 }
             }
 
             //if they didn't have permission for action
-            if (cancel) {
+            if(cancel) {
                 //cancel the event
                 ice.setCancelled(true);
 
@@ -90,13 +91,14 @@ public class SplashNerfFeature extends UHCFeature
     }
 
     @EventHandler
-    public void onInventoryMoveItemEvent(InventoryMoveItemEvent imie) {
+    public void onInventoryMoveItemEvent(InventoryMoveItemEvent imie)
+    {
         //if we're enabled
-        if (isEnabled()) {
+        if(isEnabled()) {
             //if the item is being moved into a brewing stand
-            if (imie.getDestination().getType() == InventoryType.BREWING) {
+            if(imie.getDestination().getType() == InventoryType.BREWING) {
                 //cancel glowstone
-                if (imie.getItem().getType() == Material.SULPHUR) {
+                if(imie.getItem().getType() == Material.SULPHUR) {
                     imie.setCancelled(true);
                 }
             }
@@ -104,12 +106,14 @@ public class SplashNerfFeature extends UHCFeature
     }
 
     @Override
-    public String getFeatureID() {
+    public String getFeatureID()
+    {
         return "SplashPotionNerf";
     }
 
     @Override
-    public String getDescription() {
+    public String getDescription()
+    {
         return "Removes crafting of splash potions";
     }
 }

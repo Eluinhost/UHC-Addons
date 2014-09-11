@@ -47,10 +47,9 @@ import java.util.Set;
 
 public class TeamListCommand implements Command
 {
+    public static final String TEAM_LIST_PERMISSION = "UHC.teams.list";
     private Translate translate;
     private Scoreboard scoreboard;
-
-    public static final String TEAM_LIST_PERMISSION = "UHC.teams.list";
 
     protected TeamListCommand(Translate translate, Scoreboard scoreboard)
     {

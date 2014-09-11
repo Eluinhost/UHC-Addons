@@ -43,10 +43,9 @@ import org.bukkit.command.CommandSender;
 
 public class HeadHealthCommand implements Command
 {
+    public static final String HEAD_HEALTH_PERMISSION = "UHC.heads.health";
     private final Translate translate;
     private final FeatureManager manager;
-
-    public static final String HEAD_HEALTH_PERMISSION = "UHC.heads.health";
 
     @Inject
     protected HeadHealthCommand(Translate translate, FeatureManager manager)
@@ -69,7 +68,7 @@ public class HeadHealthCommand implements Command
         GoldenHeadFeature heads = (GoldenHeadFeature) feature.get();
 
         if(set.has("a")) {
-           heads.setAmountTotal(amount);
+            heads.setAmountTotal(amount);
         }
 
         translate.sendMessage("amount total message", sender, heads.getAmountTotal());

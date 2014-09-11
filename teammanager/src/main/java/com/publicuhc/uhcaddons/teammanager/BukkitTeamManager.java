@@ -35,7 +35,8 @@ import org.bukkit.scoreboard.Team;
 
 import java.util.Set;
 
-public class BukkitTeamManager implements TeamManager {
+public class BukkitTeamManager implements TeamManager
+{
 
     private final Scoreboard scoreboard;
     private final TeamNameGenerator nameGenerator;
@@ -62,10 +63,10 @@ public class BukkitTeamManager implements TeamManager {
     public Optional<Team> createTeam(String name, boolean randomName)
     {
         try {
-            Team team  = scoreboard.registerNewTeam(name);
+            Team team = scoreboard.registerNewTeam(name);
             team.setDisplayName(randomName ? nameGenerator.getRandomTeamDisplayName() : name);
             return Optional.of(team);
-        } catch (Exception ex) {
+        } catch(Exception ex) {
             return Optional.absent();
         }
     }
@@ -97,7 +98,8 @@ public class BukkitTeamManager implements TeamManager {
     }
 
     @Override
-    public Optional<Team> getTeamByName(String name) {
+    public Optional<Team> getTeamByName(String name)
+    {
         return Optional.fromNullable(scoreboard.getTeam(name));
     }
 

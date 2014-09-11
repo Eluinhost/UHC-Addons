@@ -44,12 +44,11 @@ import java.util.Set;
 
 public class TeamLeaveCommand implements Command
 {
+    public static final String TEAM_LEAVE_PERMISSION = "UHC.teams.leave";
+    public static final String TEAM_REMOVE_PERMISSION = "UHC.teams.remove";
     private Translate translate;
     private Scoreboard scoreboard;
     private TeamManager manager;
-
-    public static final String TEAM_LEAVE_PERMISSION = "UHC.teams.leave";
-    public static final String TEAM_REMOVE_PERMISSION = "UHC.teams.remove";
 
     @Inject
     protected TeamLeaveCommand(Translate translate, Scoreboard scoreboard, TeamManager manager)

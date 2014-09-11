@@ -43,10 +43,9 @@ import java.util.List;
 
 public class NoTeamCommand implements Command
 {
+    public static final String NO_TEAM_PERMISSION = "UHC.teams.noteam";
     private final Translate translate;
     private final Scoreboard scoreboard;
-
-    public static final String NO_TEAM_PERMISSION = "UHC.teams.noteam";
 
     protected NoTeamCommand(Translate translate, Scoreboard scoreboard)
     {

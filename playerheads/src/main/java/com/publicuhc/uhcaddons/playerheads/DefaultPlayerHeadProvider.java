@@ -40,9 +40,21 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.List;
 
-public class DefaultPlayerHeadProvider implements PlayerHeadProvider {
+public class DefaultPlayerHeadProvider implements PlayerHeadProvider
+{
 
     public static final String HEAD_NAME = ChatColor.GOLD + "Golden Head";
+
+    /**
+     * Gets the closest blockface to the entities facing direction
+     *
+     * @param entity the entity
+     * @return block face
+     */
+    public static BlockFace2D getCardinalDirection(Entity entity)
+    {
+        return BlockFace2D.getClosest(Math.toRadians(entity.getLocation().getYaw()));
+    }
 
     @Override
     public ItemStack getPlayerHead(String name)
@@ -81,10 +93,10 @@ public class DefaultPlayerHeadProvider implements PlayerHeadProvider {
     @Override
     public boolean isGoldenHead(ItemStack itemStack)
     {
-        if (itemStack.getType() == Material.GOLDEN_APPLE) {
+        if(itemStack.getType() == Material.GOLDEN_APPLE) {
             ItemMeta im = itemStack.getItemMeta();
 
-            if (im.hasDisplayName() && im.getDisplayName().equals(HEAD_NAME)) {
+            if(im.hasDisplayName() && im.getDisplayName().equals(HEAD_NAME)) {
                 return true;
             }
         }
@@ -128,15 +140,5 @@ public class DefaultPlayerHeadProvider implements PlayerHeadProvider {
         state.setOwner(name);
         state.setRotation(direction.getBlockFace());
         state.update();
-    }
-
-    /**
-     * Gets the closest blockface to the entities facing direction
-     *
-     * @param entity the entity
-     * @return block face
-     */
-    public static BlockFace2D getCardinalDirection(Entity entity) {
-        return BlockFace2D.getClosest(Math.toRadians(entity.getLocation().getYaw()));
     }
 }

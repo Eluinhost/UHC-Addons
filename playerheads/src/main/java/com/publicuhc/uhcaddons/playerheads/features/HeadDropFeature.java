@@ -49,13 +49,12 @@ import java.util.Random;
 public class HeadDropFeature extends UHCFeature
 {
 
+    public static final String ON_STAKE_PERMISSION = "UHC.heads.onStake";
+    public static final String DROP_PERMISSION = "UHC.heads.drop";
     private final PlayerHeadProvider provider;
     private final Scoreboard scoreboard;
     private final FileConfiguration config;
     private final Random random = new Random();
-
-    public static final String ON_STAKE_PERMISSION = "UHC.heads.onStake";
-    public static final String DROP_PERMISSION = "UHC.heads.drop";
 
     @Inject
     public HeadDropFeature(PlayerHeadProvider provider, Configurator configurator, Scoreboard scoreboard)
@@ -71,10 +70,34 @@ public class HeadDropFeature extends UHCFeature
         this.provider = provider;
     }
 
+    /**
+     * Gets the closest non empty block under the block supplied or null if none found
+     *
+     * @param block Block
+     * @return Block
+     */
+    private static Optional<Block> getClosestGround(Block block)
+    {
+        Block loopBlock = block;
+        //recurse until found
+        while(true) {
+            //if below the world return null
+            if(loopBlock.getY() < 0) {
+                return Optional.absent();
+            }
+
+            //if it's not empty return this block
+            if(!loopBlock.isEmpty()) {
+                return Optional.of(block);
+            }
+            loopBlock = loopBlock.getRelative(BlockFace.DOWN);
+        }
+    }
+
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event)
     {
-        if (!isEnabled()) {
+        if(!isEnabled()) {
             return;
         }
 
@@ -114,25 +137,26 @@ public class HeadDropFeature extends UHCFeature
      * @param deadPlayer the dead player
      * @return boolean
      */
-    private boolean isValidDeath(Player deadPlayer){
+    private boolean isValidDeath(Player deadPlayer)
+    {
 
         Player killer = deadPlayer.getKiller();
 
-        if (config.getBoolean("drop on pvp death only")) {
+        if(config.getBoolean("drop on pvp death only")) {
             //get the killer and if there isn't one it wasn't a PVP kill
-            if (killer == null) {
+            if(killer == null) {
                 return false;
             }
         }
 
         //if we're checking that teammember kills don't count
-        if (killer != null && config.getBoolean("ignore teamkills")) {
+        if(killer != null && config.getBoolean("ignore teamkills")) {
             //get the scoreboard and get the teams of both players
             Team team1 = scoreboard.getPlayerTeam(deadPlayer);
             Team team2 = scoreboard.getPlayerTeam(killer);
 
             //if they're both in valid teams and its the same team it wasn't a valid kill
-            if (team1 != null && team2 != null && team1.getName().equals(team2.getName())) {
+            if(team1 != null && team2 != null && team1.getName().equals(team2.getName())) {
                 return false;
             }
         }
@@ -146,7 +170,8 @@ public class HeadDropFeature extends UHCFeature
      * @param p the player
      * @return true if placed, false otherwise
      */
-    private boolean putHeadOnStake(Player p) {
+    private boolean putHeadOnStake(Player p)
+    {
         //head location
         Location head = p.getEyeLocation();
         //block the player's head is in
@@ -159,7 +184,7 @@ public class HeadDropFeature extends UHCFeature
 
         //get the closest non air block below the players feet
         Optional<Block> groundOptional = getClosestGround(headBlock.getRelative(BlockFace.DOWN, 2));
-        if (!groundOptional.isPresent()) {
+        if(!groundOptional.isPresent()) {
             return false;
         }
 
@@ -169,7 +194,7 @@ public class HeadDropFeature extends UHCFeature
         Block skullBlock = ground.getRelative(BlockFace.UP, 2);
 
         //if it's not empty we can't place the block
-        if (skullBlock == null || !skullBlock.isEmpty()) {
+        if(skullBlock == null || !skullBlock.isEmpty()) {
             return false;
         }
 
@@ -178,34 +203,11 @@ public class HeadDropFeature extends UHCFeature
 
         //get the space for a fence and set it if there's nothing there
         Block fenceBlock = ground.getRelative(BlockFace.UP);
-        if (fenceBlock != null && fenceBlock.isEmpty()) {
+        if(fenceBlock != null && fenceBlock.isEmpty()) {
             fenceBlock.setType(Material.NETHER_FENCE);
         }
         //made successfully
         return true;
-    }
-
-    /**
-     * Gets the closest non empty block under the block supplied or null if none found
-     *
-     * @param block Block
-     * @return Block
-     */
-    private static Optional<Block> getClosestGround(Block block) {
-        Block loopBlock = block;
-        //recurse until found
-        while (true) {
-            //if below the world return null
-            if (loopBlock.getY() < 0) {
-                return Optional.absent();
-            }
-
-            //if it's not empty return this block
-            if (!loopBlock.isEmpty()) {
-                return Optional.of(block);
-            }
-            loopBlock = loopBlock.getRelative(BlockFace.DOWN);
-        }
     }
 
     @Override

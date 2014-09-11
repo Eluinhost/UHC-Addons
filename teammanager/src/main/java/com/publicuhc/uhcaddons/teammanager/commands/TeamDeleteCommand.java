@@ -45,7 +45,8 @@ import org.bukkit.scoreboard.Team;
 
 import java.util.List;
 
-public class TeamDeleteCommand implements Command {
+public class TeamDeleteCommand implements Command
+{
 
     public static final String TEAM_DELETE_PERMISSION = "UHC.teams.delete";
 

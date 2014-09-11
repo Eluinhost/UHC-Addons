@@ -29,7 +29,8 @@ package com.publicuhc.uhcaddons.playerheads;
 import com.publicuhc.ultrahardcore.framework.shaded.inject.AbstractModule;
 import com.publicuhc.ultrahardcore.framework.shaded.inject.Singleton;
 
-public class PlayerHeadModule extends AbstractModule {
+public class PlayerHeadModule extends AbstractModule
+{
     @Override
     protected void configure()
     {

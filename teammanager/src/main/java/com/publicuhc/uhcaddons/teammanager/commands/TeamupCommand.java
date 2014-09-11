@@ -52,11 +52,10 @@ import java.util.Set;
 
 public class TeamupCommand implements Command
 {
+    public static final String TEAMUP_PERMISSION = "UHC.teams.teamup";
     private final Translate translate;
     private final Scoreboard scoreboard;
     private final TeamManager manager;
-
-    public static final String TEAMUP_PERMISSION = "UHC.teams.teamup";
 
     @Inject
     protected TeamupCommand(Translate translate, Scoreboard scoreboard, TeamManager manager)
