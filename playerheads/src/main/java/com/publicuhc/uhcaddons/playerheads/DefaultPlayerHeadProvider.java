@@ -87,4 +87,20 @@ public class DefaultPlayerHeadProvider implements PlayerHeadProvider {
 
         return false;
     }
+
+    @Override
+    public void addPlayerLore(ItemStack itemStack, String name)
+    {
+        ItemMeta meta = itemStack.getItemMeta();
+        List<String> lore = meta.getLore();
+        lore.add(ChatColor.AQUA + "Made from the head of: " + name);
+        meta.setLore(lore);
+        itemStack.setItemMeta(meta);
+    }
+
+    @Override
+    public void addPlayerLore(ItemStack itemStack, Player player)
+    {
+        addPlayerLore(itemStack, player.getName());
+    }
 }

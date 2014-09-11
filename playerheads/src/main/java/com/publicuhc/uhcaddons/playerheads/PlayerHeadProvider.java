@@ -61,4 +61,20 @@ public interface PlayerHeadProvider {
      * @return true if stack is a golden head, false otherwise
      */
     boolean isGoldenHead(ItemStack itemStack);
+
+    /**
+     * Adds the player lore to the given itemstack
+     *
+     * @param name the name to add
+     * @param itemStack the itemstack to add the lore to
+     */
+    void addPlayerLore(ItemStack itemStack, String name);
+
+    /**
+     * Adds the player lore to the given itemstack
+     *
+     * @param itemStack the itemstack to add the lore to
+     * @param player the player
+     */
+    void addPlayerLore(ItemStack itemStack, Player player);
 }
