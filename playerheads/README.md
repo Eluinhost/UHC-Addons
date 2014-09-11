@@ -36,3 +36,19 @@ chance to drop: 100             # Chance to drop on death
 drop on pvp death only: true    # Limit heads to drop on PvP only
 ignore teamkills: true          # Never drop on teamkills
 ```
+
+### Golden heads feature
+
+Feature Name: GoldenHeads
+
+Can craft golden heads by surrounding a player head in gold
+
+Permissions:
+
+UHC.heads.craft default true, will be allowed to craft
+
+Configuration:
+
+```
+golden heads heal total: 6    # Amount of HALF hearts to heal total. If less than a regular golden apple only the golden apple will apply
+```

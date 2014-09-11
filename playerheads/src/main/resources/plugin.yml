@@ -20,3 +20,6 @@ permissions:
     UHC.heads.drop:
         description: Heads will attempt to drop on death
         default: true
+    UHC.heads.craft:
+        description: Allows crafting of golden heads
+        default: true
