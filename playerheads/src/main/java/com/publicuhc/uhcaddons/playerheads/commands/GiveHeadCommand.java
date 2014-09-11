@@ -40,6 +40,7 @@ import com.publicuhc.ultrahardcore.framework.shaded.joptsimple.OptionSet;
 import com.publicuhc.ultrahardcore.framework.translate.Translate;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 
@@ -59,11 +60,16 @@ public class GiveHeadCommand implements Command {
 
     @CommandMethod("givehead")
     @PermissionRestriction(GIVE_HEAD_PERMISSION)
-    @CommandOptions({"[arguments]", "p"})
-    public void onGiveHead(OptionSet set, CommandSender sender, List<String> args, Player[] p)
+    @CommandOptions({"[arguments]", "p", "n"})
+    public void onGiveHead(OptionSet set, CommandSender sender, List<String> args, Player[] p, Integer n)
     {
         if(args.isEmpty()) {
             translate.sendMessage("at least one", sender);
+            return;
+        }
+
+        if(n <= 0) {
+            translate.sendMessage("greater than zero", sender);
             return;
         }
 
@@ -84,8 +90,19 @@ public class GiveHeadCommand implements Command {
             return;
         }
 
+        boolean golden = set.has("g");
+
         for(String s : args) {
-            sendTo.getInventory().addItem(provider.getPlayerHead(s));
+            ItemStack toAdd;
+            if(golden) {
+                toAdd = provider.getGoldenHead();
+                provider.addPlayerLore(toAdd, s);
+            } else {
+                toAdd = provider.getPlayerHead(s);
+            }
+
+            toAdd.setAmount(n);
+            sendTo.getInventory().addItem(toAdd);
         }
 
         translate.sendMessage("given heads", sendTo, Joiner.on(",").join(args));
@@ -102,6 +119,12 @@ public class GiveHeadCommand implements Command {
                 .withRequiredArg()
                 .withValuesConvertedBy(new OnlinePlayerValueConverter(false))
                 .describedAs("Player to give the head to");
+        declarer.accepts("g", "Give golden heads to the player instead");
+        declarer.accepts("n")
+                .withRequiredArg()
+                .ofType(Integer.class)
+                .describedAs("Number of heads to give")
+                .defaultsTo(1);
         declarer.nonOptions().describedAs("List of names of players to create heads from");
     }
 }

@@ -11,6 +11,8 @@ nonOptions = list of names to give a head for
 
 -n = Amount of heads to give, default 1
 
+-g = Give golden heads instead
+
 Permissions:
 
 UHC.heads.give default op - required to use the command
