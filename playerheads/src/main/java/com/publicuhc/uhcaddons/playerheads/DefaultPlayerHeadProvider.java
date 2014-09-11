@@ -29,6 +29,10 @@ package com.publicuhc.uhcaddons.playerheads;
 import com.google.common.collect.Lists;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.SkullType;
+import org.bukkit.block.Block;
+import org.bukkit.block.Skull;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -102,5 +106,37 @@ public class DefaultPlayerHeadProvider implements PlayerHeadProvider {
     public void addPlayerLore(ItemStack itemStack, Player player)
     {
         addPlayerLore(itemStack, player.getName());
+    }
+
+    @Override
+    public void setBlockAsHead(Player p, Block headBlock)
+    {
+        setBlockAsHead(p.getName(), headBlock, getCardinalDirection(p));
+    }
+
+    @Override
+    public void setBlockAsHead(String name, Block headBlock, BlockFace2D direction)
+    {
+        //set the type to skull
+        headBlock.setType(Material.SKULL);
+        //noinspection deprecation
+        headBlock.setData((byte) 1); //TODO depreacted but no alternative yet
+
+        //get the state to be a player skull for the player and set its rotation based on where the player was looking
+        Skull state = (Skull) headBlock.getState();
+        state.setSkullType(SkullType.PLAYER);
+        state.setOwner(name);
+        state.setRotation(direction.getBlockFace());
+        state.update();
+    }
+
+    /**
+     * Gets the closest blockface to the entities facing direction
+     *
+     * @param entity the entity
+     * @return block face
+     */
+    public static BlockFace2D getCardinalDirection(Entity entity) {
+        return BlockFace2D.getClosest(Math.toRadians(entity.getLocation().getYaw()));
     }
 }

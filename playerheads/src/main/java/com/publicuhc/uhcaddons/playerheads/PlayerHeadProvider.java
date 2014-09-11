@@ -26,6 +26,7 @@
 
 package com.publicuhc.uhcaddons.playerheads;
 
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -77,4 +78,21 @@ public interface PlayerHeadProvider {
      * @param player the player
      */
     void addPlayerLore(ItemStack itemStack, Player player);
+
+    /**
+     * Sets the block given to head of the player facing in the direction the player is facing
+     *
+     * @param p the player
+     * @param headBlock the block to set
+     */
+    void setBlockAsHead(Player p, Block headBlock);
+
+    /**
+     * Sets the block given to head of the player
+     *
+     * @param name the player name
+     * @param direction the direction to face
+     * @param headBlock the block to set
+     */
+    void setBlockAsHead(String name, Block headBlock, BlockFace2D direction);
 }
